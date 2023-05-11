@@ -27,13 +27,15 @@ app.get("/books", function (req, res) {
 // a post route to add books in the empty array
 app.post("/books", function (req, res) {
 	let bookDetailsJsonData = req.body;
+	// Check if title and author properties exist
+	if (!bookDetailsJsonData.title || !bookDetailsJsonData.author) {
+		return res.status(400).json({ error: "Title and author are required" });
+	}
 	//randomly generating id's
 	bookDetailsJsonData.id = Math.floor(Math.random() * 455545663267) + 1;
-
 	books.push(bookDetailsJsonData);
 	res.json(books);
 });
-
 //Delete route
 //express route parameter
 //I call it dynamic route parameter (/)
