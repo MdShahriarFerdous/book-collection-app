@@ -18,9 +18,10 @@ app.get("/", function (req, res) {
 //Initially the array is empty.
 let books = [];
 
-// a get route that returns json array of books
+
 app.route("/books")
 
+// a get route that returns json array of books
 .get(function (req, res) {
 	let bookCollection = res.json(books);
 	res.send(bookCollection);
